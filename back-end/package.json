@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
-    "dev": "nodemon main.js",
+    "start": "nodemon main.js",
     "setup": "rm -rf node_modules -y && yarn"
   },
   "keywords": [

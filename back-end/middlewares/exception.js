@@ -1,5 +1,5 @@
 
-const {HttpException} = require('../core/http-exception');
+const { HttpException } = require('../core/http-exception');
 
 /**
  * 捕获全局异常信息的中间件
@@ -9,11 +9,13 @@ const {HttpException} = require('../core/http-exception');
  */
 const catchError = async (ctx, next) => {
     try {
+        const { url, method, body } = ctx.request;
+        const now = new Date();
+        console.log(`${now.toLocaleString()}.${now.getMilliseconds()}`, { url, method, body });
         await next();
     } catch (error) {
         const isHttpException = error instanceof HttpException;
-        const isDev = global.config.environment === 'dev';
-
+        const isDev = global.config.env === 'development';
         // 生产环境
         if (isHttpException) {
             ctx.body = {
@@ -34,7 +36,7 @@ const catchError = async (ctx, next) => {
 
         // 开发环境需要将异常抛出到服务端
         if (isDev && !isHttpException) {
-            throw error
+            console.log(error);
         }
     }
 };

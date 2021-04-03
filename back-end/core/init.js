@@ -30,7 +30,6 @@ class InitManager {
         });
         // 判断 requireDirectory 加载的模块是否为路由
         function whenLoadModule(obj) {
-            console.debug(obj);
             if (obj instanceof Router) {
                 InitManager.app.use(obj.routes())
             }

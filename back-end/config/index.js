@@ -1,3 +1,4 @@
+process.env.NODE_ENV = 'development';
 module.exports = {
     PORT: 10086,
     HOST: '0.0.0.0',

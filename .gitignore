@@ -1,0 +1,9 @@
+.idea
+.vscode
+node_modules
+.git
+dist
+build
+yarn-error.log
+.DS_Store
+yarn.lock

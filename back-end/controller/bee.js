@@ -63,10 +63,9 @@ router.post('/add', async (ctx, next) => {
  */
 router.delete('/del', async (ctx, next) => {
   const req = ctx.request;
-  if (req.body === undefined || req.body.delIdList === undefined) {
-    throw new ParameterException();
-  }
-  await service.del(req.body.delIdList);
+  const id = req.url.substring(req.url.lastIndexOf('=') + 1);
+  
+  await service.del(id);
   ctx.body = {
     status: 0,
     msg: 'ok',
@@ -142,7 +141,14 @@ router.get('/all', async (ctx, next) => {
   ctx.body = {
     status: 0,
     msg: 'ok',
-    data
+    data: data.map(v => {
+      return {
+        ...v,
+        latitude: Math.random() * 100,
+        longitude: Math.random() * 30,
+        elevation: Math.random() * 5
+      }
+    })
   };
   await next();
 });

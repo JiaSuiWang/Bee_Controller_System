@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const beeApiDelete = (params) => {
-  return axios.delete('/api/v1/bee/del', params);
+  return axios.delete(`/api/v1/bee/del?id=${params}`,);
 };
 
 export const beeApiUpdate = (params) => {

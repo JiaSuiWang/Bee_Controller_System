@@ -89,8 +89,16 @@ export default {
     };
   },
   methods: {
+    handleStr(e) {   
+        e = e || 3;
+        var t = "ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678",
+        a = t.length,
+        n = "";
+        for (let i = 0; i < e; i++) n += t.charAt(Math.floor(Math.random() * a));
+        return n
+    },   
     addBee() {
-      this.params.id = '100';
+      this.params.id = this.handleStr();
       this.$emit('add', this.params);
       this.dialogVisible = false;
     },

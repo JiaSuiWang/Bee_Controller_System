@@ -59,6 +59,9 @@
           prop="transformationRate"
           label="transformation rate"
           width="160">
+          <template slot-scope="scope">
+            <span>{{ (scope.row.honey / scope.row.nectar).toFixed(2) }}</span>
+          </template>
       </el-table-column>
       <el-table-column prop="action" label="action" width="100" align="center">
         <template slot-scope="scope">
@@ -116,12 +119,7 @@ export default {
   },
   methods: {
     async handleDelete(row) {
-      const params = {
-        delIdList: [
-          {id: row.id},
-        ]
-      };
-      await beeApiDelete(params);
+      await beeApiDelete(row.id);
       this.$emit('updateTableData');
     },
     async handleUpdate(row) {

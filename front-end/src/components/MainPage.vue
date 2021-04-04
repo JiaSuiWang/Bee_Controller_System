@@ -31,8 +31,12 @@ export default {
       tableData: [],
     };
   },
-  created() {
+  mounted() {
+    let _this = this;
     this.getAllTableData();
+    setInterval(function() {
+      _this.getAllTableData();
+    }, 5000)
   },
   methods: {
     async getAllTableData() {

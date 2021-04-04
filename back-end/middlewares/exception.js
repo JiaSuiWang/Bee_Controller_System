@@ -9,9 +9,9 @@ const { HttpException } = require('../core/http-exception');
  */
 const catchError = async (ctx, next) => {
     try {
-        const { url, method, body } = ctx.request;
+        const { url, method } = ctx.request;
         const now = new Date();
-        console.log(`${now.toLocaleString()}.${now.getMilliseconds()}`, { url, method, body });
+        console.log(`${now.toLocaleString()}.${now.getMilliseconds()}`, { url, method });
         await next();
     } catch (error) {
         const isHttpException = error instanceof HttpException;

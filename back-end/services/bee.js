@@ -27,6 +27,35 @@ module.exports.update = update;
 
 module.exports.getAll = async function () {
   const storeData = await store.get();
-  const res = Object.keys(storeData).map(k => storeData[k]);
+  
+  for (let i in storeData) {
+    storeData[i] = {
+      ...storeData[i],
+      latitude: Math.random() * 100,
+      longitude: Math.random() * 30,
+      elevation: Math.random() * 5,
+      fuel: storeData[i].fuel < 0 ? 0 : storeData[i].fuel - 1,
+      damage: storeData[i].damage > 100 ? 100 : storeData[i].damage + 1,
+      nectar: storeData[i].nectar + 5,
+      honey: storeData[i].honey + 2
+    }
+  }
+//  await store.set(storeData);
+console.log(storeData)
+ const resultData = await store.get()
+ const res = Object.keys(resultData).map(k => resultData[k]);
+  // res.forEach(data => {
+  //   storeData[data.id] = Object.assign({}, storeData[data.id], {
+  //       ...data,
+  //       latitude: Math.random() * 100,
+  //       longitude: Math.random() * 30,
+  //       elevation: Math.random() * 5,
+  //       fuel: data.fuel < 0 ? 0 : data.fuel - 1,
+  //       damage: data.damage > 100 ? 100 : data.damage + 1,
+  //       nectar: data.nectar + 5,
+  //       honey: data.honey + 2
+  //   });
+  // });
+  // await store.set(storeData);
   return res;
 };

@@ -67,11 +67,11 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-pagination
+    <!-- <el-pagination
         small
         layout="prev, pager, next"
         :total="50">
-    </el-pagination>
+    </el-pagination> -->
 
     <el-dialog
         title="Update Bee Fuel & Damage"

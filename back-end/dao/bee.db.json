@@ -1,35 +1,79 @@
 {
-  "008": {
-    "id": "008",
-    "speed": 6.5,
-    "latitude": 40.741895,
-    "longitude": -73.989308,
-    "elevation": 50,
-    "fuel": 89,
-    "damage": 0,
-    "nectar": 20,
-    "honey": 8
-  },
-  "006": {
-    "id": "006",
-    "speed": 6.5,
-    "latitude": 40.741895,
-    "longitude": -73.989308,
-    "elevation": 50,
-    "fuel": 89,
-    "damage": 0,
-    "nectar": 20,
-    "honey": 8
-  },
-  "007": {
-    "id": "007",
-    "speed": 6.5,
-    "latitude": 40.741895,
-    "longitude": -73.989308,
-    "elevation": 50,
-    "fuel": 89,
-    "damage": 0,
-    "nectar": 20,
-    "honey": 8
+    "008": {
+      "id": "008",
+      "speed": 6.5,
+      "latitude": 40.741895,
+      "longitude": -73.989308,
+      "elevation": 50,
+      "fuel": 89,
+      "damage": 0,
+      "nectar": 20,
+      "honey": 8
+    },
+    "006": {
+      "id": "006",
+      "speed": 6.5,
+      "latitude": 40.741895,
+      "longitude": -73.989308,
+      "elevation": 50,
+      "fuel": 89,
+      "damage": "1",
+      "nectar": 20,
+      "honey": 8
+    },
+    "007": {
+      "id": "007",
+      "speed": 6.5,
+      "latitude": 40.741895,
+      "longitude": -73.989308,
+      "elevation": 50,
+      "fuel": 89,
+      "damage": "6",
+      "nectar": 20,
+      "honey": 8
+    },
+    "010": {
+      "id": "010",
+      "speed": 6.6,
+      "latitude": 42.741895,
+      "longitude": 73.989308,
+      "elevation": 50,
+      "fuel": 89,
+      "damage": "7",
+      "nectar": 20,
+      "honey": 13
+    },
+    "011": {
+      "id": "011",
+      "speed": 6.11,
+      "latitude": 42.741895,
+      "longitude": 73.989308,
+      "elevation": 50,
+      "fuel": 69,
+      "damage": 45,
+      "nectar": 200,
+      "honey": 90
+    },
+    "020": {
+      "speed": 6.6,
+      "latitude": 42.741895,
+      "longitude": 73.989308,
+      "elevation": 50,
+      "fuel": 89,
+      "damage": 0,
+      "nectar": 20,
+      "honey": 13,
+      "id": "020"
+    },
+    "021": {
+      "speed": "6.123",
+      "latitude": 42.741895,
+      "longitude": 73.989308,
+      "elevation": 50,
+      "fuel": 89,
+      "damage": 0,
+      "nectar": 20,
+      "honey": 13,
+      "id": "021"
+    }
   }
-}

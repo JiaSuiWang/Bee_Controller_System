@@ -90,7 +90,7 @@ export default {
   },
   methods: {
     addBee() {
-      this.params.id = '021';
+      this.params.id = '100';
       this.$emit('add', this.params);
       this.dialogVisible = false;
     },

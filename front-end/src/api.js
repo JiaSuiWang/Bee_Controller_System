@@ -15,3 +15,10 @@ export const beeApiGetAll = () => {
 export const beeApiAdd = (params) => {
   return axios.post('/api/v1/bee/add', params).then(r => r.data);
 };
+
+export const beeApiStatictics = () => {
+  return axios.get('/api/v1/bee/statistics').then(r => r.data);
+};
+
+
+

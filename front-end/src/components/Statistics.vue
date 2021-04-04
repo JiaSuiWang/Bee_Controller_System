@@ -7,7 +7,7 @@
           <i class="iconfont icon-quanbu"></i>
           <p>
             共收集蜂蜜：
-            <span>18g</span>
+            <span>{{ form.allNectar }}g</span>
           </p>
         </div>
       </el-col>
@@ -16,7 +16,7 @@
           <i class="iconfont icon-18002"></i>
           <p>
             共生产蜂蜜：
-            <span>18g</span>
+            <span>{{ form.allHoney }}g</span>
           </p>
         </div>
       </el-col>
@@ -25,7 +25,7 @@
           <i class="iconfont icon-xiangmutongji"></i>
           <p>
             总转化率：
-            <span>18%</span>
+            <span>{{ form.transformationRate }}</span>
           </p>
         </div>
       </el-col>
@@ -34,7 +34,7 @@
           <i class="iconfont icon-shebei"></i>
           <p>
             蜜蜂总数量：
-            <span>188</span>
+            <span>{{ form.allNum }}</span>
           </p>
         </div>
       </el-col>
@@ -42,8 +42,8 @@
         <div class="an-view-list">
           <i class="iconfont icon-wodexuqiu"></i>
           <p>
-            燃料60%：
-            <span>18只</span>
+            燃料>60%：
+            <span>{{ form.sixtyNumFuel }}只</span>
           </p>
         </div>
       </el-col>
@@ -51,8 +51,8 @@
         <div class="an-view-list">
           <i class="iconfont icon-icon1"></i>
           <p>
-            状态60%：
-            <span>188</span>
+            状态>60%：
+            <span>{{ form.sixtyNumDamage }}只</span>
           </p>
         </div>
       </el-col>
@@ -61,13 +61,33 @@
 </template>
 
 <script>
+import {beeApiStatictics} from "../api"
 export default {
+  data() {
+    return {
+      form : {
+        allHoney: "",
+        allNectar: "",
+        transformationRate: "",
+        allNum:"",
+        sixtyNumFuel: "",
+        sixtyNumDamage: "",
+      }
+    }
+  },
   methods: {
     async handelData() {
-      let res = await API_BEES_STATIS();
+      let res = await beeApiStatictics();
       if (!res) return;
-      console.log(res);
+      this.form = res.data;
     }
+  },
+  mounted() {
+    let _this = this;
+    this.handelData();
+    setInterval(function() {
+      _this.handelData()
+    }, 5000)
   }
 };
 </script>

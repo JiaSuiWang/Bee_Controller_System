@@ -1,6 +1,6 @@
 const Router = require('koa-router');
 const service = require('../services/bee');
-const { ParameterException } = require('../core/http-exception');
+const {ParameterException} = require('../core/http-exception');
 
 const router = new Router({
   prefix: '/api/v1/bee'
@@ -41,9 +41,9 @@ router.post('/add', async (ctx, next) => {
     status: 0,
     msg: 'ok',
     data: {},
-  }
+  };
   await next();
-})
+});
 
 /**
  * url: http://localhost:10086/api/v1/bee/del
@@ -71,9 +71,10 @@ router.delete('/del', async (ctx, next) => {
     status: 0,
     msg: 'ok',
     data: {},
-  }
+  };
   await next();
-})
+});
+
 /**
  * http://localhost:10086/api/v1/bee/update
  * method: put
@@ -109,10 +110,9 @@ router.put('/update', async (ctx, next) => {
     status: 0,
     msg: 'ok',
     data: {},
-  }
+  };
   await next();
-})
-
+});
 
 /**
  * url: http://localhost:10086/api/v1/bee/all
@@ -142,10 +142,32 @@ router.get('/all', async (ctx, next) => {
   ctx.body = {
     status: 0,
     msg: 'ok',
-    data,
-  }
+    data
+  };
   await next();
 });
 
+router.get('/statistics', async (ctx, next) => {
+  const data = await service.getAll();
+  const allNectar = data.reduce((pre, cur) => {
+    return pre + cur.nectar
+  }, 0)
+  const allHoney = data.reduce((pre, cur) => {
+    return pre + cur.honey
+  }, 0)
 
+  ctx.body = {
+    status: 0,
+    msg: 'ok',
+    data: {
+    allNectar: allNectar, 
+    allHoney:allHoney,
+    transformationRate: (allHoney / allNectar).toFixed(2),
+    allNum:data.length,
+    sixtyNumFuel: data.filter(v => v.fuel > 60).length,
+    sixtyNumDamage: data.filter(v => v.damage > 60).length,
+    }
+  };
+  await next();
+});
 module.exports = router;
